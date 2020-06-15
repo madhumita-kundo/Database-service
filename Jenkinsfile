@@ -41,19 +41,19 @@ pipeline {
     ])
 }
 		stage('deploy to UcDeploy'){
-			 step([$class: 'UCDeployPublisher',
-        siteName: '35.242.161.163',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'Database Service Component'
-        ],
-        deploy: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
-            deployApp: 'Full Application',
-            deployEnv: 'DEV',
-            deployProc: 'Deploy Application',
-            deployVersions: '${component_name}_${BUILD_NUMBER}',
-            deployOnlyChanged: false
+			 steps([$class: 'UCDeployPublisher',
+        			siteName: '35.242.161.163',
+        			component: [
+            			$class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
+            			componentName: 'Database Service Component'
+       				 ],
+       				 deploy: [
+            			$class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
+           			 deployApp: 'Full Application',
+           			 deployEnv: 'DEV',
+            			deployProc: 'Deploy Application',
+           			 deployVersions: '${component_name}_${BUILD_NUMBER}',
+           			 deployOnlyChanged: false
         ]
     ])
 }
